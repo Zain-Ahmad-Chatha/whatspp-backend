@@ -1,10 +1,11 @@
 // IMPORTS
+const { port } = require("./config");
 const express = require("express");
 const mongoose = require("mongoose");
 const Pusher = require("pusher");
 const morgan = require("morgan");
 const cors = require("cors");
-const dotenv = require("dotenv").config();
+
 require("./db");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
@@ -22,18 +23,18 @@ const corsOptions = {
   },
 };
 // middleware
-
+// cors policy in which origin the request is accepted.
 app.use(express.json(corsOptions));
+// parser data in body.
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 app.use(urlencodedParser);
 
+//  for logging every request in console.
 app.use(morgan("tiny"));
 
 mongoose.set("strictQuery", true);
 app.use(cors());
 // CONFIG
-const port = process.env.PORT;
-console.log("port : ", port);
 
 // DB connection config
 
@@ -55,7 +56,7 @@ db.once("open", () => {
   console.log("connected to DB listener.");
   const messageCollection = db.collection("messages");
   const changeStream = messageCollection.watch();
-  // return;
+  return;
   changeStream.on("change", (change) => {
     // console.log("change is working, ", change);
     if (change.operationType === "insert") {

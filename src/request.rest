@@ -1,0 +1,4 @@
+
+GET http://localhost/v1/users
+
+GET https://localhost/v1/comments/1

@@ -7,8 +7,9 @@ const local_mongo_url = `mongodb://localhost:27017/${process.env.DB_NAME}`;
 
 mongoose
   .connect(mongo_url, {
-    useNewUrlParser: "true",
-    useUnifiedTopology: "true",
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // useCreateIndex: true,
   })
   .then(() => {
     console.log("Connection Build to MongoDb");

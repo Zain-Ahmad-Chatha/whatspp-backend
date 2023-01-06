@@ -1,17 +1,22 @@
 const express = require("express");
 const router = express.Router();
 // router files
-const usersRoute = require("./users");
+const usersListRoute = require("./usersList");
 const messagesRoute = require("./messages");
+const userRoute = require("./user");
 
 const defaultRoutes = [
   {
-    path: "/users",
-    route: usersRoute,
+    path: "/usersList",
+    route: usersListRoute,
   },
   {
     path: "/messages",
     route: messagesRoute,
+  },
+  {
+    path: "/user",
+    route: userRoute,
   },
 ];
 
