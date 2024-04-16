@@ -7,7 +7,8 @@ const userRoute = require("./user");
 
 const defaultRoutes = [
   {
-    path: "/usersList",
+    // path: "/usersList",
+    path: "/users",
     route: usersListRoute,
   },
   {

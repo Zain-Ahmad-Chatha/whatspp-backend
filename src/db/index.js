@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const { db_name } = require("../config");
 
 // database name is after mongodb.net
-const mongo_url = `mongodb+srv://root:x6jtWG5KEuSHusbZ@cluster0.3r1cx6h.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const mongo_url = `mongodb+srv://root:x6jtWG5KEuSHusbZ@cluster0.3r1cx6h.mongodb.net/${db_name}?retryWrites=true&w=majority`;
 
-const local_mongo_url = `mongodb://localhost:27017/${process.env.DB_NAME}`;
+const local_mongo_url = `mongodb://localhost:27017/${db_name}`;
 
 mongoose
   .connect(mongo_url, {
